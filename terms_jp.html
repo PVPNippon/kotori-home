@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="robots" content="noarchive">
-  <title>Kotori Game</title>
+  <title>Terms of Service</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>
 </head>
 <body class="bg-gray-900 text-white">
 
-  <header class="bg-gray-800 p-4">
+  <!-- Header -->
+  <header id="site-header" class="bg-gray-800 p-4">
     <nav class="container mx-auto flex justify-between items-center">
       <a href="index.html" class="text-white text-lg font-bold">Home</a>
       <div x-data="{ open: false }" class="relative">
@@ -40,25 +40,25 @@
     </nav>
   </header>
 
-  <div class="flex items-center justify-center h-screen">
-    <div class="text-center">
-      <h1 class="text-5xl md:text-7xl font-bold mb-6 animate-bounce">Kotori Game - cock-a-doodle-doo</h1>
-      <h1 class="text-3xl md:text-5xl font-bold mb-6">Coming Soon</h1>
-      <p class="text-lg md:text-2xl mb-12">We are working very hard to bring you the best experience.</p>
+  <main class="container mx-auto p-6">
+    <h1 class="text-3xl font-bold mb-4">アプリケーション利用規約</h1>
+    <p class="mb-4">TBD</p>
 
-      <p id="notifyMessage" class="hidden text-green-400">Thank you! You'll be notified when we launch.</p>
-      <div class="flex justify-center space-x-6 mt-8">
-        <!-- <img src="./img/main_logo.svg" alt="" class="h-64 w-64"> -->
-      </div>
-    </div>
-  </div>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+  </main>
   <script>
-    document.getElementById('notifyForm').addEventListener('submit', function(event) {
-      event.preventDefault();
-      document.getElementById('notifyMessage').classList.remove('hidden');
-    });
+    document.addEventListener("DOMContentLoaded", function() {
+   // Check if the page is loaded in an iframe
+   if (window.self !== window.top) {
+     // Hide the header if inside an iframe
+     document.getElementById('site-header').style.display = 'none';
+   } else {
+     // Check if the page is accessed via GitHub Pages
+     if (!window.location.href.includes("kotori-bounce.com")) {
+       // Hide the header if not on GitHub Pages
+       document.getElementById('site-header').style.display = 'none';
+     }
+   }
+  });
   </script>
 </body>
 </html>

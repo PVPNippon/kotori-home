@@ -52,7 +52,18 @@
           <a href="privacy_policy_jp.html" class="block px-4 py-2 text-white hover:bg-gray-600">JP</a>
         </div>
       </div>
-      <a href="terms.html" class="text-white px-4 hover:underline">Terms of Service</a>
+      <div x-data="{ open: false }" class="relative">
+        <label @click="open = !open" class="text-white px-4 hover:underline cursor-pointer flex items-center">
+          Terms and Conditions
+          <svg class="w-4 h-4 ml-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+            <path d="M7.293 9.293a1 1 0 011.414 0L10 10.586l1.293-1.293a1 1 0 111.414 1.414l-2 2a1 1 0 01-1.414 0l-2-2a1 1 0 010-1.414z" clip-rule="evenodd" fill-rule="evenodd"></path>
+          </svg>
+        </label>
+        <div x-show="open" @click.away="open = false" class="absolute right-0 mt-2 bg-gray-700 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 z-10">
+          <a href="terms_en.html" class="block px-4 py-2 text-white hover:bg-gray-600">EN</a>
+          <a href="terms_jp.html" class="block px-4 py-2 text-white hover:bg-gray-600">JP</a>
+        </div>
+      </div>
     </nav>
   </header>
 
@@ -534,7 +545,7 @@
    document.getElementById('site-header').style.display = 'none';
  } else {
    // Check if the page is accessed via GitHub Pages
-   if (!window.location.href.includes("github.io")) {
+   if (!window.location.href.includes("kotori-bounce.com")) {
      // Hide the header if not on GitHub Pages
      document.getElementById('site-header').style.display = 'none';
    }
