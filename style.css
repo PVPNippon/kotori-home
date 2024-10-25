@@ -974,6 +974,21 @@ video {
   color: rgb(194 65 12 / var(--tw-text-opacity));
 }
 
+.top-auto {
+  top: auto;
+}
+
+
+.bottom-full {
+  bottom: 100%;
+}
+
+
+.bg-orange-200 {
+  --tw-text-opacity: 1;
+  background-color: rgb(254 215 170);
+}
+
 .hover\:underline:hover {
   text-decoration-line: underline;
 }
