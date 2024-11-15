@@ -1,17 +1,37 @@
 //TODO: configure function so that it waits until all DOM elements are loaded to run
 
 function toggleDropdown(event, dropdownId) {
-  event.preventDefault(); // Prevents the page from jumping
+  event.preventDefault();
 
-   // Hide all dropdowns first
-   document.querySelectorAll('ul[id^="privacyDropdown"], ul[id^="termsDropdown"]').forEach(dropdown => {
+  // Get the dropdown element
+  const dropdown = document.getElementById(dropdownId);
+
+  // Check if the dropdown is already visible
+  const isVisible = !dropdown.classList.contains('hidden');
+
+  // Hide all dropdowns first
+  document.querySelectorAll('ul[id^="privacyDropdown"], ul[id^="termsDropdown"]').forEach((dropdown) => {
     dropdown.classList.add('hidden');
   });
 
-  // Toggle the selected dropdown visibility
-  const dropdown = document.getElementById(dropdownId);
-  dropdown.classList.toggle('hidden');
+  // If it was not visible before, toggle it to be visible
+  if (!isVisible) {
+    dropdown.classList.remove('hidden');
+  }
 }
+
+// Listen for clicks outside the dropdowns
+document.addEventListener('click', function (event) {
+  const isDropdown = event.target.closest('ul[id^="privacyDropdown"], ul[id^="termsDropdown"]');
+  const isDropdownTrigger = event.target.closest('a[onclick^="toggleDropdown"]');
+
+  // If the click is outside the dropdown and not on a dropdown trigger, hide all dropdowns
+  if (!isDropdown && !isDropdownTrigger) {
+    document.querySelectorAll('ul[id^="privacyDropdown"], ul[id^="termsDropdown"]').forEach((dropdown) => {
+      dropdown.classList.add('hidden');
+    });
+  }
+});
 
 document.addEventListener("DOMContentLoaded", function() {
 
